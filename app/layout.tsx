@@ -17,12 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="fadeIn">
+    <html lang="en">
       <body
-        className={`${inter.className} bg-white dark:bg-[#0d1117] duration-300`}
+        className={`${inter.className} bg-white dark:bg-[#0d1117] duration-300 fadeIn`}
       >
-        <Provider>
-          <NextThemeProvider>
+        <NextThemeProvider>
+          <Provider>
             <ThemeSwitcher />
             {children}
             <footer className="w-full flex items-center justify-center mt-[100px] p-1">
@@ -53,8 +53,8 @@ export default function RootLayout({
                 </a>
               </p>
             </footer>
-          </NextThemeProvider>
-        </Provider>
+          </Provider>
+        </NextThemeProvider>
       </body>
     </html>
   );
