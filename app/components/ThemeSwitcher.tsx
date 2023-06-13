@@ -6,16 +6,6 @@ const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    }
-
-    if (theme === "light") {
-      setTheme("dark");
-    }
-  };
-
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -27,7 +17,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       className="w-fit absolute right-5 top-2 p-2 rounded-md hover:scale-110 active:scale-100 duration-300 bg-slate-200 dark:bg-[#212933]"
-      onClick={() => toggleTheme()}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? (
         <svg

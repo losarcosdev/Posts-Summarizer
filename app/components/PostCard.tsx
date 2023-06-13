@@ -8,7 +8,7 @@ interface Props {
 
 export const PostCard = ({ post }: Props) => {
   return (
-    <>
+    <article>
       <Link
         href={post.url}
         target="_blank"
@@ -29,6 +29,6 @@ export const PostCard = ({ post }: Props) => {
         </div>
       </Link>
       <DeleteButton id={post.id} />
-    </>
+    </article>
   );
 };

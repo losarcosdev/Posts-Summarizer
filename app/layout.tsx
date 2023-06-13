@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Provider } from "./state/provider";
-import { NextThemeProvider } from "./theme-prodiver";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import { ThemeProvider } from "./theme-prodiver";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +21,15 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-white dark:bg-[#0d1117] duration-300 fadeIn`}
       >
-        <NextThemeProvider>
-          <Provider>
+        <Provider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <ThemeSwitcher />
-            {children}
+            <header className="flex p-5 items-center justify-center md:justify-between h-[15vh]">
+              <div className="text-white text-2xl md:text-3xl gradient-text-1 font-extrabold">
+                Summarizer
+              </div>
+            </header>
+            <main>{children}</main>
             <footer className="w-full flex items-center justify-center mt-[100px] p-1">
               <p className="flex gap-3 text-slate-800 dark:text-white text-center duration-300">
                 Created by
@@ -53,8 +58,8 @@ export default function RootLayout({
                 </a>
               </p>
             </footer>
-          </Provider>
-        </NextThemeProvider>
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
