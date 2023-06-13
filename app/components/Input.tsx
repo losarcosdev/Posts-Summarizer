@@ -5,12 +5,33 @@ import { useCustomSelector } from "../hooks/useCustomSelector";
 
 export const Input = () => {
   const [inputValue, setInputValue] = useState<string>("");
-  const { setPost } = useActions();
+  const { setPost, SET_ERROR } = useActions();
 
   const { loading } = useCustomSelector((state) => state.posts);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!inputValue) {
+      SET_ERROR("Please enter a valid URL");
+      setTimeout(() => {
+        SET_ERROR("");
+      }, 10000);
+      return;
+    }
+
+    // Regular expression to validate URL
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!urlRegex.test(inputValue)) {
+      // inputValue is not a valid URL, show error message
+      SET_ERROR("Please enter a valid URL");
+      setTimeout(() => {
+        SET_ERROR("");
+      }, 10000);
+      return;
+    }
+
     setPost(inputValue);
     setInputValue(() => "");
   };
@@ -49,7 +70,7 @@ export const Input = () => {
         <input
           disabled={loading}
           type="text"
-          className={`p-3 rounded-md text-slate-800 dark:text-white bg-slate-200 dark:bg-[#212933] outline-none w-full pl-10 ${
+          className={`p-3 rounded-md text-slate-800 dark:text-white bg-slate-100 dark:bg-[#212933] outline-none w-full pl-10 ${
             loading && "opacity-30 select-none"
           } duration-300`}
           placeholder="Paste the post link..."

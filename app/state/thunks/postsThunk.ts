@@ -35,7 +35,7 @@ export const setPost = (url: string) => async (dispatch: Dispatch) => {
     console.log(error);
     if (error.response) {
       dispatch(
-        SET_ERROR(error.response.data.error || error.response.data.error)
+        SET_ERROR(error.response.data.error || error.response.data.message)
       );
       setTimeout(() => {
         dispatch(SET_ERROR(null));

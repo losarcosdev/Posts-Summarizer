@@ -22,9 +22,9 @@ export const DeleteButton = ({ id }: Props) => {
 
   return (
     <button
-      className={`hover:bg-slate-300 hover:translate-y-[0.25rem] p-2 rounded-bl-md rounded-br-md 
-    w-[95%] md:w-[50%] mx-auto text-slate-800 dark:text-white bg-slate-200 dark:bg-[#212933] 
-    duration-300 hover:dark:bg-[#1d232c]`}
+      className={`hover:bg-slate-300 hover:translate-y-[0.25rem] 
+      p-2 rounded-bl-md rounded-br-md  bg-slate-100 dark:bg-[#212933] 
+    duration-300 hover:dark:bg-[#1d232c] w-full`}
       onClick={handleDelete}
     >
       Delete
